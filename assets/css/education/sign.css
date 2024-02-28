@@ -1,0 +1,150 @@
+/*  */
+.u_sign{
+	position: relative;
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.u_sign_logo{
+	position: absolute;
+	top: 20px;
+	left: 0;
+	width: 100%;
+	height: 44px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.u_sign_logo_l{
+	position: relative;
+	width: 36px;
+	height: 36px;
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.u_sign_logo_r{
+	/* margin-left: 15px; */
+	font-size: 18px;
+	font-weight: 700;
+}
+
+
+
+.usign_c{
+	position: relative;
+	width: 100%;
+	margin: auto;
+	max-width: 540px;
+	transition: .3s;
+	padding: 60px 0;
+}
+@media (max-width: 500px) {
+	.usign_c{}
+}
+
+.usign_img{
+	position: relative;
+	margin: auto;
+	width: 74px;
+	height: 74px;
+	display:  flex;
+	justify-content: center;
+	align-items: center;
+}
+.usign_img div{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-size: 100% auto;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+
+.usign_h{
+	position: relative;
+	width: 100%;
+	margin-top: 30px;
+	text-align: center;
+}
+.usign_p{
+	position: relative;
+	width: 100%;
+	margin-top: 15px;
+	text-align: center;
+}
+
+
+
+
+.usign_f{
+	position: relative;
+	width: 100%;
+}
+
+.uitemc_um{
+   width: 100%;
+   margin-bottom: 0;
+}
+.uitemc_umi{
+   width: 50%;
+}
+
+
+/*  */
+.form_im{}
+.form_txt{}
+
+
+
+
+
+.usign_ex{
+	position: relative;
+	width: 100%;
+	margin-bottom: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--red);
+}
+.usign_exi{
+	position: relative;
+	width: 54px;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	font-size: 32px;
+	margin-right: 15px;
+}
+
+
+.usign_cn{
+	position: relative;
+	width: 100%;
+	margin-top: 40px;
+}
+.si_blc_b{
+	position: relative;
+	width: 100%;
+	margin-top: 20px;
+}
+
+
+
+.si_blc_bn{
+	position: relative;
+	width: 100%;
+	margin-top: 30px;
+}
+.cn_reset{
+	position: relative;
+	/* display: flex; */
+	/* justify-content: space-between; */
+	/* align-items: center; */
+}
+/* .cn_reset .btn{width: auto;} */
