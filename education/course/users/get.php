@@ -55,7 +55,7 @@
 		$days = $cours['access'];
 		$end_dt = date('Y-m-d H:i:s', strtotime("$datetime +$days day"));
 		$mess = "Cізге $cours_name курсына доступ ашылды. Сілтеме: https://tnsacademy.kz/?c=$cours_id";
-		$mess2 = "Cізге $cours_name курсына доступ ашылды.\nТіркелген почтаңыз: $phone\nСілтеме: https://tnsacademy.kz/?c=$cours_id";
+		$mess2 = "Cізге $cours_name курсына доступ ашылды.\nТіркелген почтаңыз: $mail\nСілтеме: https://tnsacademy.kz/?c=$cours_id";
 
 		$user = db::query("SELECT * FROM `user` WHERE mail = '$mail'");
 		if (mysqli_num_rows($user) != 0) {
