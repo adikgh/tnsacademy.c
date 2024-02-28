@@ -60,20 +60,20 @@ $(document).ready(function() {
 	
 
 	//
-	$('input[type*="text"], input[type*="password"]').on('input', function() {
+	$('html').on('input', 'input[type*="text"], input[type*="password"]', function() {
 		$(this).attr('data-val', $(this).val())
 		if ($(this).attr('data-lenght') <= $(this).val().length) {
 			$(this).attr('data-sel', 1);
 		} else {$(this).attr('data-sel',0)}
 	});
-	$('input[type*="tel"]').on('input', function() {
+	$('html').on('input', 'input[type*="tel"]', function() {
 		var val = $(this).val().replace(/_/g, '').replace(/ /g, '').replace(/-/g, '').replace(/\(/g, '').replace(/\)/g, '').replace(/\+/g, '').replace(/тг/g, '').replace(/күн/g, '').replace(/\./g, '')
 		$(this).attr('data-val', val)
 		if ($(this).attr('data-lenght') <= val.length) {
 			$(this).attr('data-sel', 1);
 		} else {$(this).attr('data-sel',0)}
 	});
-	$('input[type*="url"]').on('input', function(){
+	$('html').on('input', 'input[type*="url"]', function(){
 		val = $(this).val().replace('https://', '').replace('www.', '').replace('youtube.com/watch?v=', '').replace('youtu.be/', '').replace(/\&.*/, '');
 		$(this).attr('data-val', val);
 	})

@@ -181,3 +181,30 @@
 	}
 
 
+
+
+
+	// 
+	if(isset($_GET['lesson_edit'])) {
+		$id = @strip_tags($_POST['id']);
+		$name = @strip_tags($_POST['name']);
+		$youtube = @strip_tags($_POST['youtube']);
+		$youtube_id = @strip_tags($_POST['youtube_id']);
+		$txt = @strip_tags($_POST['txt']);
+		$txt_id = @strip_tags($_POST['txt_id']);
+
+		if ($name) $ins_li = db::query("UPDATE `course_lesson` SET `name_kz` = '$name', `name_ru` = '$name' WHERE id = '$id'");
+		if ($youtube) $ins_li = db::query("UPDATE `course_lesson_item` SET `txt` = '$youtube' WHERE id = '$youtube_id'");
+		if ($txt) $ins_li = db::query("UPDATE `course_lesson_item` SET `txt` = '$txt' WHERE id = '$txt_id'");
+
+		echo 'yes';
+		exit();
+	}
+
+	// 
+	if(isset($_GET['lesson_del'])) {
+		$id = @strip_tags($_POST['id']);
+		$del = db::query("DELETE FROM `course_lesson` WHERE `id` = '$id'");
+		if ($del) echo 'yes';
+		exit();
+	}

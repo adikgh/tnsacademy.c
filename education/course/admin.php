@@ -83,13 +83,14 @@
 										<? $lesson_id = $item['id']; ?>
 										<? $pay_lesson_itd = db::query("select * from course_pay_lesson where lesson_id = '$lesson_id' and user_id = '$user_id' and open = 1"); ?>
 										<? if (!$block['type'] || (mysqli_num_rows($pay_lesson_itd) && $block['type'] == 'approval')): ?>
-											<a class="coursls_i" <?=($item['open']?'href="lesson/?id='.$item['id'].'"':'')?>>
+											<div class="coursls_i">
 												<div class="coursls_ic">
 													<div class="coursls_in"><?=$item['number']?>. <?=$item['name_'.$lang]?></div>
 												</div>
-												<? if ($item['open']): ?> <div class="coursls_il"><i class="far fa-play"></i></div>
-												<? else: ?> <div class="coursls_il coursls_il_lock"><i class="far fa-lock"></i></div> <? endif ?>
-											</a>
+												<a class="coursls_il" href="lesson/?id=<?=$item['id']?>"><i class="far fa-external-link"></i></a>
+												<div class="coursls_il clc_lesson_b" data-id="<?=$item['id']?>"><i class="far fa-pen"></i></div>
+												<div class="coursls_il del_lesson_b" data-id="<?=$item['id']?>"><i class="far fa-trash-alt"></i></div>
+											</div>
 										<? endif ?>
 									<? endwhile ?>
 								<? endif ?>
@@ -148,28 +149,22 @@
 						<input type="text" class="form_txt lesson_name" placeholder="Атауын жазыңыз" data-lenght="2">
 						<i class="far fa-text form_icon"></i>
 					</div>
+
+					<div class="form_im">
+						<div class="form_span">Видеосы: (Yotube)</div>
+						<input type="url" class="form_txt lesson_youtube" placeholder="Сілтемесін салыңыз" data-lenght="1" />
+						<i class="fal fa-play form_icon"></i>
+					</div>
+					<div class="form_im">
+						<div class="form_span">Мәтіні:</div>
+						<textarea type="text" class="form_im_comment_aut lesson_txt" rows="5" autocomplete="off" autocorrect="off" aria-label="Мәтінді жазыңыз .." placeholder="Мәтінді жазыңыз .." ></textarea>
+						<script>autosize(document.querySelectorAll('.form_im_comment_aut'));</script>
+					</div>
+
 					<div class="form_im form_im_toggle">
 						<div class="form_span">Сабақты ашып қою:</div>
 						<input type="checkbox" class="lesson_open" data-val="1" />
 						<div class="form_im_toggle_btn form_im_toggle_act"></div>
-					</div>
-
-					<div class="form_im form_im_toggle">
-						<div class="form_span">Сабақты толықтыру:</div>
-						<input type="checkbox" class="price_inp" data-val="" />
-						<div class="form_im_toggle_btn lesson1_clc"></div>
-					</div>
-					<div class="lesson1_block">
-						<div class="form_im">
-							<div class="form_span">Видеосы: (Yotube)</div>
-							<input type="url" class="form_txt lesson_youtube" placeholder="Сілтемесін салыңыз" data-lenght="1" />
-							<i class="fal fa-play form_icon"></i>
-						</div>
-						<div class="form_im">
-							<div class="form_span">Мәтіні:</div>
-							<textarea type="text" class="form_im_comment_aut lesson_txt" rows="5" autocomplete="off" autocorrect="off" aria-label="Мәтінді жазыңыз .." placeholder="Мәтінді жазыңыз .." ></textarea>
-							<script>autosize(document.querySelectorAll('.form_im_comment_aut'));</script>
-						</div>
 					</div>
 
 					<div class="form_im form_im_bn">
@@ -177,6 +172,19 @@
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
+
+
+	<!-- lesson edit -->
+	<div class="pop_bl pop_bl2 lesson_edit">
+		<div class="pop_bl_a lesson_edit_back"></div>
+		<div class="pop_bl_c">
+			<div class="head_c txt_c">
+				<h5>Cабақты өңдеу</h5>
+				<div class="btn btn_dd2 lesson_edit_back"><i class="fal fa-times"></i></div>
+			</div>
+			<div class="pop_bl_cl lesson_edit_99"></div>
 		</div>
 	</div>
 

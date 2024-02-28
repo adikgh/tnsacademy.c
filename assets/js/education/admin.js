@@ -221,7 +221,7 @@ $(document).ready(function() {
 		$('#html').removeClass('ovr_h');
 		$('.btn_lesson_add').attr('data-block-id', '')
 	})
-	$('.lesson1_clc').click(function() { $('.lesson1_block').toggleClass('lesson1_block_act') });
+	// $('.lesson1_clc').click(function() { $('.lesson1_block').toggleClass('lesson1_block_act') });
 
 	$('.btn_lesson_add').on('click', function(){
 		if ($('.lesson_name').attr('data-sel') != 1) mess('Тақырыпты жазыңыз')
@@ -308,6 +308,95 @@ $(document).ready(function() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// clc_lesson_b
+	$('.clc_lesson_b').click(function(){
+		$('.lesson_edit').addClass('pop_bl_act');
+		$('#html').addClass('ovr_h');
+
+		id = $(this).attr('data-id')
+		// if ($(this).attr('data-block-id')) $('.btn_lesson_edit').attr('data-block-id', id)
+		$('.lesson_clc_menu').attr('data-id', id)		
+		$('.lesson_clc_viewm').attr('href', 'lesson.php?id=' + id)
+
+		$.ajax({
+			url: "/education/course/edit_ls.php?view",
+			type: "POST",
+			dataType: "html",
+			data: ({ id: id, }),
+			beforeSend: function(){ },
+			error: function(data){ console.log(data) },
+			success: function(data){
+				if (data) $('.lesson_edit_99').html(data)
+				else console.log(data)
+			},
+		})
+
+	})
+
+
+	$('.lesson_edit_back').click(function(){
+		$('.lesson_edit').removeClass('pop_bl_act');
+		$('#html').removeClass('ovr_h');
+		$('.btn_lesson_edit').attr('data-block-id', '')
+	})
+	$('.lesson1_clc').click(function() { $('.lesson1_block').toggleClass('lesson1_block_act') });
+
+
+	$('html').on('click', '.btn_lesson_edit', function(){
+		id = $(this).attr('data-id')
+		$.ajax({
+			url: "/education/course/get.php?lesson_edit",
+			type: "POST",
+			dataType: "html",
+			data: ({
+				id: id,
+				name: $('.lesson_edt_name').attr('data-val'),
+				youtube: $('.lesson_edt_youtube').attr('data-val'),
+				youtube_id: $('.lesson_edt_youtube').attr('data-id'),
+				txt: $('.lesson_edt_txt').val(),
+				txt_id: $('.lesson_edt_txt').attr('data-id'),
+			}),
+			beforeSend: function(){ },
+			error: function(data){ console.log(data) },
+			success: function(data){
+				if (data == 'yes') location.reload();
+				else console.log(data)
+			},
+		})
+	})
+
+
+	
+
+	// 
+	$('html').on('click', '.del_lesson_b', function(){
+		id = $(this).attr('data-id')
+		$.ajax({
+			url: "/education/course/get.php?lesson_del",
+			type: "POST",
+			dataType: "html",
+			data: ({ id: id, }),
+			beforeSend: function(){ },
+			error: function(data){ console.log(data) },
+			success: function(data){
+				if (data == 'yes') location.reload();
+				else console.log(data)
+			},
+		})
+	})
 
 
 
