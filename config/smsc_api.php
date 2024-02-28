@@ -1,13 +1,13 @@
 <?
 
-	// define("SMSC_LOGIN", "dosbol_08");
-	// define("SMSC_PASSWORD", "426f39b0f195e82d3f78fef3d7b18f8f83505d78");
+	define("SMSC_LOGIN", "dosbol_08");
+	define("SMSC_PASSWORD", "426f39b0f195e82d3f78fef3d7b18f8f83505d78");
 
 	// define("SMSC_LOGIN", "saqserik");
 	// define("SMSC_PASSWORD", "da0311636343f678cd5eecc15f64ed101c2408eb");
 
-	define("SMSC_LOGIN", "adik.gh99");
-	define("SMSC_PASSWORD", "fb53068205f144e272d2d29f1ae4bc59fbb97362");
+	// define("SMSC_LOGIN", "adik.gh99");
+	// define("SMSC_PASSWORD", "fb53068205f144e272d2d29f1ae4bc59fbb97362");
 
 	define("SMSC_POST", 0);					// ������������ ����� POST
 	define("SMSC_HTTPS", 0);				// ������������ HTTPS ��������
