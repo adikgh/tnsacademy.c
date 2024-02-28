@@ -98,8 +98,8 @@
 
 		// mall send
 		public static function send_mail($mail, $txt) {
-			$from = "info@moldiracademy.kz";
-			$subject = "Dr. Moldir";
+			$from = "info@tnsacademy.kz";
+			$subject = "TNS Academy";
 			$headers = "From:" . $from. "\r\n";
 			$headers .= "Content-type:text/html;charset=UTF-8";
 			$mess = "<html>
