@@ -173,7 +173,7 @@
 					</div>
 
 					<div class="form_im form_im_bn">
-						<div class="btn btn_lesson_add" data-course-id="<?=$course_id?>" data-pack-id="<?=$pack_id?>">Қосу</div>
+						<div class="btn btn_lesson_add" data-course-id="<?=$course_id?>">Қосу</div>
 					</div>
 				</div>
 			</div>
@@ -216,7 +216,7 @@
 					</div>
 
 					<div class="form_im form_im_bn">
-						<div class="btn btn_block_add" data-course-id="<?=$course_id?>" data-pack-id="<?=$pack_id?>">Қосу</div>
+						<div class="btn btn_block_add" data-course-id="<?=$course_id?>">Қосу</div>
 					</div>
 				</div>
 			</div>
@@ -244,16 +244,11 @@
 						<input type="tel" class="form_txt fr_days cours_access" placeholder="60 күн" data-lenght="1" value="<?=$course_d['access']?>" />
 						<i class="fal fa-calendar-alt form_icon"></i>
 					</div>
-					<div class="form_im">
-						<div class="form_span">Автор:</div>
-						<input type="text" class="form_txt cours_autor" placeholder="Авторды жазыңыз" data-lenght="2" value="<?=$course_d['autor']?>" />
-						<i class="fal fa-user-graduate form_icon"></i>
-					</div>
 
 					<div class="form_im">
 						<div class="form_span">Курс фотосы:</div>
 						<input type="file" class="cours_img file dsp_n" accept=".png, .jpeg, .jpg">
-						<div class="form_im_img cours_img_add <?=($course_d['img']?'form_im_img2':'')?>" <?=($course_d['img']?'style="background-image: url(/assets/img/cours/'.$course_d['img'].')"':'')?> data-txt="Фотоны жаңарту">Құрылғыдан таңдау</div>
+						<div class="form_im_img cours_img_add <?=($course_d['img']?'form_im_img2':'')?>" <?=($course_d['img']?'style="background-image: url(/assets/uploads/course/'.$course_d['img'].')"':'')?> data-txt="Фотоны жаңарту">Құрылғыдан таңдау</div>
 					</div>
 
 					<div class="form_im form_im_toggle">

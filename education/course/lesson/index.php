@@ -12,8 +12,8 @@
          $cours_id = fun::block($block_id);
 
          $cours_d = fun::course($cours_id);
-         if ($cours_d['private']) header('location: /education/'.$cours_d['private_link'].'/lesson.php?id='.$lesson_id);
-         if ($lesson['site']) header('location: /education/'.$lesson['site'].'?id='.$lesson_id);
+         // if ($cours_d['private']) header('location: /education/'.$cours_d['private_link'].'/lesson.php?id='.$lesson_id);
+         // if ($lesson['site']) header('location: /education/'.$lesson['site'].'?id='.$lesson_id);
 
          
          $sub = db::query("select * from course_pay where course_id = '$cours_id' and user_id = '$user_id'");
@@ -24,7 +24,7 @@
          if (mysqli_num_rows($sub_info) != 0) {
             $sub_info_d = mysqli_fetch_array($sub_info);
             db::query("UPDATE `course_pay_lesson` SET `upd_dt` = '$datetime', `view` = 1 where lesson_id = '$lesson_id' and user_id = '$user_id'");
-            if (!$sub_info_d['lesson_stage']) $sub_info_d['lesson_stage'] = 1;
+            if (!@$sub_info_d['lesson_stage']) $sub_info_d['lesson_stage'] = 1;
          } else { 
             db::query("INSERT INTO `course_pay_lesson`(`block_id`, `lesson_id`, `user_id`, `view`) VALUES ('$block_id', '$lesson_id', '$user_id', 1)");
             $sub_info_d['lesson_stage'] = 1;
@@ -34,7 +34,7 @@
          $number_prev = $lesson['number'] - 1;
          $number_next = $lesson['number'] + 1;
          while ($ls_d = mysqli_fetch_assoc($ls)) {
-            $result = (strtotime(date("d.m.Y")) - strtotime($sub_i['ins_date'])) / (60*60*24*7);
+            $result = @((strtotime(date("d.m.Y")) - strtotime($sub_i['ins_date'])) / (60*60*24*7));
             $weeks = floor($result);
             if (($ls_d['number']==$number_prev && $user_right) || ($ls_d['number']==$number_prev && $ls_d['open'] == 1)) $lesson_prev_id = $ls_d['id'];
             if (($ls_d['number']==$number_next && $user_right) || ($ls_d['number']==$number_next && $ls_d['open'] == 1 && $weeks >= $number_next)) $lesson_next_id = $ls_d['id'];
@@ -84,7 +84,7 @@
    
          <div class="ulesson_btn">
             <div class="ulesson_btn_c">
-               <? if ($lesson_prev_id): ?>
+               <? if (@$lesson_prev_id): ?>
                   <a href="?id=<?=$lesson_prev_id?>" class="btn_prev">
                      <div class="btn btn_back">
                         <i class="fal fa-long-arrow-left"></i>
@@ -98,7 +98,7 @@
                      <span>Сабақты аяқтау</span>
                   </div>
                </a>
-               <? if ($lesson_next_id): ?>
+               <? if (@$lesson_next_id): ?>
                   <a href="?id=<?=$lesson_next_id?>" class="btn_next">
                      <div class="btn btn_back">
                         <span>Келесі сабаққа</span>

@@ -6,7 +6,7 @@
 	if (!$user['open']) $ubd = db::query("UPDATE `user` SET `open` = 1 WHERE id = '$user_id'");
 
 	// Cours 
-	$pay_course = db::query("select * from course_pay where user_id = '$user_id' ORDER BY ins_dt DESC");
+	$pay_course = db::query("select * from course_pay where user_id = '$user_id' and course_id is not null ORDER BY ins_dt DESC");
 
 
 	// Сайттың баптаулары

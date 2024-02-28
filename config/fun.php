@@ -13,6 +13,10 @@
 			$sql = db::query("select * from course_info where course_id = '$id'");
 			if (mysqli_num_rows($sql)) return mysqli_fetch_array($sql); else return null;
 		}
+		public static function course_next_number() {
+			$sql = db::query("select * from course order by number desc limit 1");
+			if (mysqli_num_rows($sql)) return (mysqli_fetch_array($sql))['number'] + 1; else return 1;
+		}
 
 
 		// pack
@@ -33,9 +37,8 @@
 			$sql = mysqli_fetch_array($sql);
 			return $sql['course_id'];
 		}
-		public static function block_next_number($id, $pid) {
-			if ($pid) $sql = db::query("select * from course_block where pack_id = '$pid' order by number desc limit 1"); 
-			else $sql = db::query("select * from course_block where course_id = '$id' order by number desc limit 1");
+		public static function block_next_number($id) {
+			$sql = db::query("select * from course_block where course_id = '$id' order by number desc limit 1");
 			if (mysqli_num_rows($sql)) return (mysqli_fetch_array($sql))['number'] + 1; else return 1;
 		}
 

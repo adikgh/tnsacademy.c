@@ -6,25 +6,25 @@
 	// Курс деректері
 	if (isset($_GET['id']) || $_GET['id'] != '') {
 		$course_id = $_GET['id'];
+		if ($user_right) header('location: /education/course/admin.php?id='.$course_id);
 		$course = db::query("select * from course where id = '$course_id'");
 		if (mysqli_num_rows($course)) {
 			$course_d = mysqli_fetch_assoc($course);			
 			if ($course_d['info']) $course_d = array_merge($course_d, fun::course_info($course_d['id']));
+
+			// Жазылымды тексеру
+			$buy = db::query("select * from course_pay where course_id = '$course_id' and user_id = '$user_id'");
+			if (mysqli_num_rows($buy)) $buy_d = mysqli_fetch_assoc($buy);
+			else $buy = 0;
+
+			// 
+			$cblock = db::query("select * from course_block where course_id = '$course_id' order by number asc");
+
 		} else header('location: /education/my/');
 	} else header('location: /education/my/');
 
-	// Жазылымды тексеру
-	$buy = db::query("select * from course_pay where course_id = '$course_id' and user_id = '$user_id'");
-	if (mysqli_num_rows($buy)) {
-		$buy_d = mysqli_fetch_assoc($buy);
-		if ($course_d['contract']) $contract = @$buy_d['$contract'];
-	} else $buy = 0;
 
 
-	// 
-	$cblock = db::query("select * from course_block where course_id = '$course_id' order by number asc");
-
-	
 	// Сайттың баптаулары
 	$menu_name = 'item';
 	$site_set['utop_bk'] = ' ';
@@ -179,28 +179,3 @@
 	</div>
 
 <? include "../block/footer.php"; ?>
-
-	<? if (@$course_d['contract'] && @$buy_d['contract'] != 2): ?>
-		<div class="pop_bl contract_block pop_bl_act" >
-			<div class="pop_bl_a contract_back" ></div>
-			<div class="pop_bl_c">
-				<div class="head_c txt_c">
-					<h5>Договор оферта</h5>
-				</div>
-				<div class="txt_c">
-					<p class="contract_hh">Төмендегі келісім шартты қабылдамай <br> курсты бастай алмайсыз</p>
-					<a class="contract_a" target="_blank" href="contract/<?=$course_d['contract']?>" data-id="<?=$buy_d['id']?>">
-						<div class="contract_ghn">
-							<div class="contract_ghnc"></div>
-							<div class="btn btn_back3">Оқып шығу</div>
-						</div>
-					</a>
-				</div>
-				<div class="form_c">
-					<div class="form_im form_im_bn">
-						<div class="btn btn_contract_fg <?=(!$buy_d['contract']?'btn_grs':'')?> <?=($buy_d['contract']==1?'btn_contract_sel':'')?>" data-id="<?=$buy_d['id']?>">Оқып шықтым, қабылдаймын</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	<? endif ?>

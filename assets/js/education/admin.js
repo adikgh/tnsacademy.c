@@ -89,10 +89,13 @@ $(document).ready(function() {
 				type: "POST",
 				dataType: "html",
 				data: ({
-					name: $('.cours_name').attr('data-val'), access: $('.cours_access').data('val'),
-					rates: $('.cours_rates').data('val'), img: $('.cours_img').attr('data-val'),
-					price: $('.cours_price').data('val'), price_sole: $('.cours_price_sole').data('val'),
-					item: $('.cours_item').data('val'), assig: $('.cours_assig').data('val'),
+					name: $('.cours_name').attr('data-val'), 
+					access: $('.cours_access').data('val'),
+					img: $('.cours_img').attr('data-val'),
+					price: $('.cours_price').data('val'), 
+					price_sole: $('.cours_price_sole').data('val'),
+					item: $('.cours_item').data('val'), 
+					assig: $('.cours_assig').data('val'),
 				}),
 				success: function(data){
 					if (data == 'plus') location.reload();
@@ -120,10 +123,13 @@ $(document).ready(function() {
 			dataType: "html",
 			data: ({
 				id: $('.btn_cours_edit').data('cours-id'),
-				name: $('.cours_name').data('val'), access: $('.cours_access').data('val'),
-				autor: $('.cours_autor').data('val'), img: $('.cours_img').data('val'),
-				price: $('.cours_price').data('val'), price_sole: $('.cours_price_sole').data('val'),
-				item: $('.cours_item').data('val'), assig: $('.cours_assig').data('val'),
+				name: $('.cours_name').data('val'),
+				access: $('.cours_access').data('val'),
+				img: $('.cours_img').data('val'),
+				price: $('.cours_price').data('val'),
+				price_sole: $('.cours_price_sole').data('val'),
+				item: $('.cours_item').data('val'),
+				assig: $('.cours_assig').data('val'),
 			}),
 			success: function(data){
 				if (data == 'plus') location.reload();
@@ -170,42 +176,6 @@ $(document).ready(function() {
 
 
 
-	// add_pack_b
-	$('.add_pack_b').click(function(){
-		$('.pack_add').addClass('pop_bl_act');
-		$('#html').addClass('ovr_h');
-	})
-	$('.pack_add_back').click(function(){
-		$('.pack_add').removeClass('pop_bl_act');
-		$('#html').removeClass('ovr_h');
-	})
-	$('.btn_pack_add').on('click', function(){
-		if ($('.pack_name').attr('data-sel') != 1) mess('Тақырыпты жазыңыз')
-		else {
-			$.ajax({
-				url: "/education/course/get.php?pack_add",
-				type: "POST",
-				dataType: "html",
-				data: ({
-					name: $('.pack_name').attr('data-val'),
-					course_id: $('.btn_pack_add').data('course-id'),
-					access: $('.pack_access').data('val'),
-					price: $('.pack_price').data('val'),
-					price_sole: $('.pack_price_sole').data('val'),
-				}),
-				success: function(data){
-					if (data == 'yes') location.reload();
-					else console.log(data)
-				},
-				beforeSend: function(){},
-				error: function(data){console.log(data)}
-			})
-		} 
-	})
-
-
-
-
 
 
 	// add_block_b
@@ -227,7 +197,6 @@ $(document).ready(function() {
 				data: ({
 					name: $('.block_name').attr('data-val'),
 					course_id: $('.btn_block_add').data('course-id'),
-					pack_id: $('.btn_block_add').data('pack-id'),
 					item: $('.block_item').data('val'), assig: $('.block_assig').data('val'),
 				}),
 				success: function(data){
@@ -264,7 +233,6 @@ $(document).ready(function() {
 				data: ({
 					name: $('.lesson_name').attr('data-val'),
 					course_id: $('.btn_lesson_add').data('course-id'),
-					pack_id: $('.btn_lesson_add').data('pack-id'),
 					block_id: $('.btn_lesson_add').data('block-id'),
 					open: $('.lesson_open').attr('data-val'),
 					youtube: $('.lesson_youtube').attr('data-val'),

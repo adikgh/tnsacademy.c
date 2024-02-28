@@ -13,8 +13,8 @@
 		$cours_name = $cours['name_'.$lang];
 		$days = $cours['access'];
 		$end_dt = date('Y-m-d H:i:s', strtotime("$datetime +$days day"));
-		$mess = "Cізге $cours_name курсына доступ ашылды. Сілтеме: https://moldiracademy.kz/?c=$cours_id";
-		$mess2 = "Cізге $cours_name курсына доступ ашылды.\nТіркелген нөміріңіз: $phone\nСілтеме: https://moldiracademy.kz/?c=$cours_id";
+		$mess = "Cізге $cours_name курсына доступ ашылды. Сілтеме: https://tnsacademy.kz/?c=$cours_id";
+		$mess2 = "Cізге $cours_name курсына доступ ашылды.\nТіркелген нөміріңіз: $phone\nСілтеме: https://tnsacademy.kz/?c=$cours_id";
 
 		$user = db::query("SELECT * FROM `user` WHERE phone = '$phone'");
 		if (mysqli_num_rows($user)) {
@@ -24,7 +24,7 @@
 			$sub = db::query("SELECT * FROM `course_pay` WHERE user_id = '$user_id' and course_id = '$cours_id'");
 			if (mysqli_num_rows($sub) == 0) {
 				if (get_balance() > 50) $sms_send = list($sms_id, $sms_cnt, $cost, $balance) = send_sms($phone, $mess, 0, 0, 0, 0, false);
-				if ($sms_send[1] <= 4 || get_balance() > 50) {
+				if (@$sms_send[1] <= 4 || get_balance() > 50) {
 					$ins = db::query("INSERT INTO `course_pay`(`course_id`, `user_id`, `end_dt`) VALUES ('$cours_id', '$user_id', '$end_dt')");
 					if ($ins) echo 'add'; else echo 'error';
 				} else echo 'error';
@@ -36,7 +36,7 @@
 				$user_d = mysqli_fetch_assoc(db::query("SELECT * FROM `user` WHERE phone = '$phone'"));
 				$user_id = $user_d['id'];
 				if (get_balance() > 50) $sms_send = list($sms_id, $sms_cnt, $cost, $balance) = send_sms($phone, $mess2, 0, 0, 0, 0, false);
-				if ($sms_send[1] <= 4 || get_balance() > 50) {
+				if (@$sms_send[1] <= 4 || get_balance() > 50) {
 					$ins = db::query("INSERT INTO `course_pay`(`course_id`, `user_id`, `end_dt`) VALUES ('$cours_id', '$user_id', '$end_dt')");
 					if ($ins) echo 'add'; else echo 'error';
 				} else echo 'error';
@@ -54,8 +54,8 @@
 		$cours_name = $cours['name_'.$lang];
 		$days = $cours['access'];
 		$end_dt = date('Y-m-d H:i:s', strtotime("$datetime +$days day"));
-		$mess = "Cізге $cours_name курсына доступ ашылды. Сілтеме: https://moldiracademy.kz/?c=$cours_id";
-		$mess2 = "Cізге $cours_name курсына доступ ашылды.\nТіркелген почтаңыз: $phone\nСілтеме: https://moldiracademy.kz/?c=$cours_id";
+		$mess = "Cізге $cours_name курсына доступ ашылды. Сілтеме: https://tnsacademy.kz/?c=$cours_id";
+		$mess2 = "Cізге $cours_name курсына доступ ашылды.\nТіркелген почтаңыз: $phone\nСілтеме: https://tnsacademy.kz/?c=$cours_id";
 
 		$user = db::query("SELECT * FROM `user` WHERE mail = '$mail'");
 		if (mysqli_num_rows($user) != 0) {
@@ -125,7 +125,7 @@
 		$course_id = $sub_d['course_id'];
 		$course_name = $course_d['name_kz'];
 
-		$mess = "Cізге $course_name курсына доступ ашылды.\nТіркелген нөміріңіз: $phone\nСілтеме: https://moldiracademy.kz/?c=$course_id";
+		$mess = "Cізге $course_name курсына доступ ашылды.\nТіркелген нөміріңіз: $phone\nСілтеме: https://tnsacademy.kz/?c=$course_id";
 
 		$sms_send = list($sms_id, $sms_cnt, $cost, $balance) = send_sms($phone, $mess, 0, 0, 0, 0, false);
 		if ($sms_send[1] <= 4 || get_balance() > 50) echo 'yes'; else echo 'error';

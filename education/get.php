@@ -90,7 +90,7 @@
 			if ($user_d['password'] && $user_d['type_aut'] != 'code') echo 'pass';
 			elseif (($user_d['code'] && $user_d['sms']) || $user_d['type_aut'] == 'code') echo 'code';
 			else {
-				$mess = "Dr. Moldir | Тексеру коды: $code";
+				$mess = "TNS Academy | Тексеру коды: $code";
 				$sms_send = fun::send_mail($mail, $mess);
 				if ($sms_send) {
 					$ubd = db::query("UPDATE `user` SET `code` = '$code', `sms` = 1 WHERE mail = '$mail'");

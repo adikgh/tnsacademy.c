@@ -90,11 +90,6 @@
 						<input type="tel" class="form_txt fr_days cours_access" placeholder="60 күн" data-lenght="1" />
 						<i class="fal fa-calendar-alt form_icon"></i>
 					</div>
-					<div class="form_im">
-						<div class="form_span">Тариф саны (егер бар болса):</div>
-						<input type="tel" class="form_txt fr_number cours_rates" placeholder="1" data-lenght="1" />
-						<i class="fal fa-calendar-alt form_icon"></i>
-					</div>
 
 					<div class="form_im">
 						<div class="form_span">Курс фотосы:</div>
