@@ -43,8 +43,8 @@
 						<input type="tel" class="form_txt fr_phone phone phone_inp" placeholder="8 (000) 000-00-00" data-lenght="11" data-sel="0" />
 						<i class="fal fa-user form_icon"></i>
 					</div>
-					<div class="form_im form_im_ps dsp_n">
-						<input type="password" class="form_txt password" placeholder="Құпия сөз" data-lenght="6" data-sel="0" />
+					<div class="form_im form_im_ps">
+						<input type="password" class="form_txt password" placeholder="Құпия сөз" data-lenght="4" data-sel="0" />
 						<i class="fal fa-lock-alt form_icon"></i>
 						<i class="fal fa-eye-slash form_icon_pass"></i>
 					</div>

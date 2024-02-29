@@ -103,9 +103,9 @@
 
 	// login mail
 	if(isset($_GET['login_mail'])) {
-		$mail = strip_tags($_POST['mail']);
-		$password = strip_tags($_POST['password']);
-		$code = strip_tags($_POST['code']);
+		$mail = @strip_tags($_POST['mail']);
+		$password = @strip_tags($_POST['password']);
+		// $code = @strip_tags($_POST['code']);
 		$user = db::query("SELECT * FROM user WHERE mail = '$mail' and mail is not null");
 		if (mysqli_num_rows($user)) {
 			$user_d = mysqli_fetch_assoc($user);

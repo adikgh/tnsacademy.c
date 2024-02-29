@@ -14,7 +14,7 @@
 		$days = $cours['access'];
 		$end_dt = date('Y-m-d H:i:s', strtotime("$datetime +$days day"));
 		$mess = "Cізге $cours_name курсына доступ ашылды. Сілтеме: https://tnsacademy.kz/?c=$cours_id";
-		$mess2 = "Cізге $cours_name курсына доступ ашылды.\nТіркелген нөміріңіз: $phone\nСілтеме: https://tnsacademy.kz/?c=$cours_id";
+		$mess2 = "Cізге $cours_name курсына доступ ашылды.\nТіркелген нөміріңіз: $phone\nПароль: $code\nСілтеме: https://tnsacademy.kz/?c=$cours_id";
 
 		$user = db::query("SELECT * FROM `user` WHERE phone = '$phone'");
 		if (mysqli_num_rows($user)) {
@@ -30,7 +30,7 @@
 				} else echo 'error';
 			} else echo 'yes';
 		} else {
-			if (get_balance() > 50) $user_ins = db::query("INSERT INTO `user`(`phone`) VALUES ('$phone')");
+			if (get_balance() > 50) $user_ins = db::query("INSERT INTO `user`(`phone`, `password`) VALUES ('$phone', '$code')");
 			else $user_ins = db::query("INSERT INTO `user`(`phone`, `password`) VALUES ('$phone', '123456')");
 			if ($user_ins) {
 				$user_d = mysqli_fetch_assoc(db::query("SELECT * FROM `user` WHERE phone = '$phone'"));
@@ -55,7 +55,7 @@
 		$days = $cours['access'];
 		$end_dt = date('Y-m-d H:i:s', strtotime("$datetime +$days day"));
 		$mess = "Cізге $cours_name курсына доступ ашылды. Сілтеме: https://tnsacademy.kz/?c=$cours_id";
-		$mess2 = "Cізге $cours_name курсына доступ ашылды.\nТіркелген почтаңыз: $mail\nСілтеме: https://tnsacademy.kz/?c=$cours_id";
+		$mess2 = "Cізге $cours_name курсына доступ ашылды.\nТіркелген почтаңыз: $mail\nПароль: $code\nСілтеме: https://tnsacademy.kz/?c=$cours_id";
 
 		$user = db::query("SELECT * FROM `user` WHERE mail = '$mail'");
 		if (mysqli_num_rows($user) != 0) {
@@ -70,7 +70,7 @@
 				echo 'add';
 			} else echo 'yes';
 		} else {
-			$sql = db::query("INSERT INTO `user`(`mail`) VALUES ('$mail')");
+			$sql = db::query("INSERT INTO `user`(`mail`, `password`) VALUES ('$mail', '$code')");
 			if ($sql) {
 				$user_d = mysqli_fetch_assoc(db::query("SELECT * FROM `user` WHERE mail = '$mail'"));
 				$user_id = $user_d['id'];
