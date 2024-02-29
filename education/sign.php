@@ -61,9 +61,7 @@
 						</div>
 					</div> -->
 					<div class="form_im">
-						<button class="btn btn_sign_in" Кіру> 
-							<span>Номерді тексеру</span>
-						</button>
+						<button class="btn btn_sign_in">Кіру</button>
 					</div>
 				</div>
 

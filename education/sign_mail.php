@@ -58,9 +58,7 @@
 						</div>
 					</div> -->
 					<div class="form_im">
-						<button class="btn sign_mail" Кіру>
-							<span>Почтаны тексеру</span>
-						</button>
+						<button class="btn sign_mail">Кіру</button>
 					</div>
 				</div>
 
