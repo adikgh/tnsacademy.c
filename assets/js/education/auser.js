@@ -178,6 +178,18 @@ $(document).ready(function() {
 		})
 	})
 	
+	
+	// pass_copy
+	$('html').on('click', '.pass_copy', function(){
+		id = $(this).attr('data-id')
+		nm = $(this).attr('data-nm')
+		ph = $(this).attr('data-ph')
+		ps = $(this).attr('data-ps')
+		txt = "Cізге " + nm + " курсына доступ ашылды. Тіркелген нөміріңіз: " + ph + ". Пароль: " + ps + ". Сілтеме: https://tnsacademy.kz/?c=" + id
+		copytext(txt);
+		mess('Cәтті көшірілді');
+	})
+	
 	// sms send all
 	// $('.sms_send_all').on('click', function(){
 	// 	var btn = $(this)

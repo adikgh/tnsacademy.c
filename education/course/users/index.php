@@ -126,7 +126,8 @@
 									</div>
 
 									<div class="uc_ui_3f">
-										<? if (!$user_d['open']): ?> Платформаға кірмеген 
+										<? if (!$user_d['sms']): ?> SMS-бармады
+										<? elseif (!$user_d['open']): ?> Платформаға кірмеген
 										<? elseif (!$sub_d['view']): ?> Курсты ашпаған
 										<? else: ?> Курсты оқып жатыр <? endif ?>
 									</div>
@@ -135,7 +136,7 @@
 								<div class="uc_uib">
 									<div class="uc_uibo"><i class="fal fa-ellipsis-v"></i></div>
 									<div class="menu_c uc_uibs">
-										<div class="menu_ci pass_resert" data-title2="" data-id="<?=$sub_d['user_id']?>">
+										<div class="menu_ci pass_copy" data-title2="" data-id="<?=$course_id?>" data-nm="<?=$course_d['name_kz']?>" data-ph="<?=$user_d['phone']?>" data-ps="<?=$user_d['password']?>">
 											<div class="menu_cin"><i class="fal fa-key"></i></div>
 											<div class="menu_cih">Кілт сөзді алу</div>
 										</div>
